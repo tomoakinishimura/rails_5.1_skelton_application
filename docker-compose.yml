@@ -5,7 +5,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - .:/cotabi:cached
+      - .:/app:cached
     depends_on:
       - db
 
