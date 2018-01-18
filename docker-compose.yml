@@ -1,0 +1,24 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/cotabi:cached
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    volumes_from:
+      - db_data
+    ports:
+      - 3333:3306
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  db_data:
+    image: busybox
+    volumes:
+      - /var/lib/mysql
